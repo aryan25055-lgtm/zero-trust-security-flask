@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Admin dashboard{% endblock %}
+{% block content %}
+<h1 class="fw-bold mb-1">Administrator dashboard</h1><p class="muted mb-4">User directory and recent access decisions.</p>
+<div class="card p-3 mb-4">
+  <h4>Users</h4><div class="table-responsive"><table class="table table-sm align-middle">
+    <thead><tr><th>Username</th><th>Role</th><th>Created</th></tr></thead>
+    <tbody>{% for user in users %}<tr><td>{{ user.username }}</td><td>{{ user.role }}</td><td>{{ user.created_at }}</td></tr>{% endfor %}</tbody>
+  </table></div>
+</div>
+<div class="card p-3">
+  <h4>Recent access logs</h4><div class="table-responsive"><table class="table table-sm align-middle">
+    <thead><tr><th>Time (UTC)</th><th>User</th><th>Action</th><th>Resource</th><th>Decision</th><th>Reason</th><th>IP</th></tr></thead>
+    <tbody>{% for item in logs %}<tr>
+      <td class="text-nowrap">{{ item.created_at }}</td><td>{{ item.username or '—' }}</td><td>{{ item.action }}</td><td>{{ item.resource or '—' }}</td>
+      <td><span class="badge text-bg-{{ 'success' if item.decision == 'ALLOWED' else 'danger' }}">{{ item.decision }}</span></td><td>{{ item.reason }}</td><td>{{ item.ip_address }}</td>
+    </tr>{% else %}<tr><td colspan="7" class="muted">No events recorded yet.</td></tr>{% endfor %}</tbody>
+  </table></div>
+</div>
+{% endblock %}
