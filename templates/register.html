@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Register{% endblock %}
+{% block content %}
+<div class="row justify-content-center"><div class="col-md-6 col-lg-5">
+  <div class="card p-4">
+    <h2 class="fw-bold">Create employee account</h2><p class="muted">New accounts receive the employee role by default.</p>
+    <form method="post">
+      <input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+      <label class="form-label">Username</label><input class="form-control mb-3" name="username" minlength="3" maxlength="30" required>
+      <label class="form-label">Password</label><input class="form-control mb-3" type="password" name="password" minlength="10" required>
+      <button class="btn btn-primary w-100">Create account</button>
+    </form>
+  </div>
+</div></div>
+{% endblock %}
