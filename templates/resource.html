@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}{{ resource.title }}{% endblock %}
+{% block content %}
+<div class="card p-4">
+  <span class="badge text-bg-success align-self-start mb-3">Access granted</span>
+  <h1 class="fw-bold">{{ resource.title }}</h1>
+  <p class="muted">{{ resource.content }}</p>
+  <hr><p class="small muted mb-0">Policy decision: authenticated identity, trusted device, and role permission verified.</p>
+  <a href="{{ url_for('dashboard') }}" class="btn btn-outline-primary mt-3 align-self-start">Back to dashboard</a>
+</div>
+{% endblock %}
