@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block title %}Error {{ code }}{% endblock %}
+{% block content %}
+<div class="card p-5 text-center">
+  <div class="display-4 fw-bold">{{ code }}</div><h2 class="fw-bold">Access decision</h2><p class="muted">{{ message }}</p>
+  <a href="{{ url_for('dashboard') if session.get('user_id') else url_for('index') }}" class="btn btn-primary align-self-center">Return</a>
+</div>
+{% endblock %}
