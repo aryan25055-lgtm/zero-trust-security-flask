@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Zero Trust Security Lab{% endblock %}
+{% block content %}
+<section class="hero p-5 mb-4">
+  <div class="row align-items-center">
+    <div class="col-lg-8">
+      <p class="text-uppercase small fw-semibold text-info">Cybersecurity project</p>
+      <h1 class="display-5 fw-bold">Never trust. Always verify.</h1>
+      <p class="lead text-white-50">Explore a practical Zero Trust security model with identity checks, MFA, trusted devices, least privilege, and audit logging.</p>
+      <a class="btn btn-info btn-lg me-2" href="{{ url_for('login') }}">Launch lab</a>
+      <a class="btn btn-outline-light btn-lg" href="{{ url_for('register') }}">Create account</a>
+    </div>
+    <div class="col-lg-4 mt-4 mt-lg-0">
+      <div class="bg-white bg-opacity-10 rounded-4 p-4">
+        <div class="fs-1">🛡️</div>
+        <h5>Access is evaluated</h5>
+        <p class="mb-0 text-white-50">Identity + device + role + resource policy</p>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="row g-3">
+  {% for title, desc in [
+    ('Identity verification','Passwords are stored as secure hashes, followed by a one-time code challenge.'),
+    ('Device trust','Protected resources require a registered browser token.'),
+    ('Least privilege','Employee and admin roles have different resource permissions.'),
+    ('Audit trail','Every important access decision is recorded for review.')
+  ] %}
+  <div class="col-md-6 col-lg-3"><div class="card h-100 p-3"><h5>{{ title }}</h5><p class="muted mb-0">{{ desc }}</p></div></div>
+  {% endfor %}
+</div>
+{% endblock %}
